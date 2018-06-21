@@ -168,7 +168,7 @@ End Checker.
 
 
 CoInductive Partial {A} : Type :=
-  | Later : Partial -> Partial
+  | Later : Partial (A := A) -> Partial
   | Now   :  A -> Partial.
 
 Arguments Partial : clear implicits.

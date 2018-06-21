@@ -18,13 +18,13 @@ Defined.
 
 Inductive EachI {A} {B : A -> Type} : list A -> Type :=
   | EachI_nil : EachI nil
-  | EachI_cons : forall {x : A} {xs : list A}, B x -> EachI xs -> EachI (x :: xs).
+  | EachI_cons : forall {x : A} {xs : list A}, B x -> EachI (B := B) xs -> EachI (x :: xs).
 
 Arguments EachI {A} B xs.
 
 Inductive SomeI {A} {B : A -> Type} : list A -> Type :=
   | Some_here : forall {x xs}, B x -> SomeI (x :: xs)
-  | Some_there : forall {x xs}, SomeI xs -> SomeI (x :: xs).
+  | Some_there : forall {x xs}, SomeI (B := B) xs -> SomeI (x :: xs).
 
 Arguments SomeI {A} B xs.
 
